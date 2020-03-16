@@ -1,0 +1,13 @@
+Package: CovidCharacter
+Title: Clinical Characterization of COVID-19
+Version: 0.0.0.9000
+Authors@R: 
+    person(given = "Seng Chan",
+           family = "You",
+           role = c("aut", "cre"),
+           email = "applegna@gamil.com",
+           comment = c(ORCID = "0000-0002-5052-6399"))
+Description: What the package does (one paragraph).
+License: Apache License 2.0
+Encoding: UTF-8
+LazyData: true
