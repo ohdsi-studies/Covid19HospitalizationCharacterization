@@ -5,7 +5,7 @@ Clinical Characterization of COVID-19
 
 - Analytics use case(s): **Characterization**
 - Study type: **Clinical Application**
-- Tags: **OHDSI, Study-a-thon**
+- Tags: **OHDSI, Study-a-thon, COVID-19**
 - Study lead: **Seng Chan You**
 - Study lead forums tag: **[SCYou](https://forums.ohdsi.org/u/SCYou)**
 - Study start date: **March 16, 2020**
