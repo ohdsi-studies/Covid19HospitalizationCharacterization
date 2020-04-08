@@ -57,8 +57,7 @@ Alternatively, ensure that you have installed only the 64-bit versions of R and 
 3. Once installed, you can execute the study by modifying and using the code below. For your convenience, this code is also provided under `extras/CodeToRun.R`:
 
 	```r
-  
-  	# Load the package
+	# Load the package
 	library(CovidHospCohortDiag)
 	
 	# Optional: specify where the temporary files (used by the ff package) will be created:
@@ -68,25 +67,26 @@ Alternatively, ensure that you have installed only the 64-bit versions of R and 
 	maxCores <- parallel::detectCores()
   
 	# Details for connecting to the server:
-  connectionDetails <- DatabaseConnector::createConnectionDetails(dbms = "pdw",
+	connectionDetails <- DatabaseConnector::createConnectionDetails(dbms = "pdw",
                                                                  server = Sys.getenv("PDW_SERVER"),
                                                                  user = NULL,
                                                                  password = NULL,
                                                                  port = Sys.getenv("PDW_PORT"))
-     # For Oracle: define a schema that can be used to emulate temp tables:
-     OracleTempSchema <- NULL
+								 
+	# For Oracle: define a schema that can be used to emulate temp tables:
+     	OracleTempSchema <- NULL
      
-     # Details specific to the database:
-     outputFolder <- "s:/CovidHospCohortDiag/mdcd"
-     cdmDatabaseSchema <- "cdm_ibm_mdcd_v1023.dbo"
-     cohortDatabaseSchema <- "scratch.dbo"
-     cohortTable <- "mschuemi_skeleton_mdcd"
-     databaseId <- "MDCD"
-     databaseName <- "Truven Health MarketScan® Multi-State Medicaid Database"
-     databaseDescription <- "Truven Health MarketScan® Multi-State Medicaid Database (MDCD) adjudicated US health insurance claims for Medicaid enrollees from multiple states and includes hospital discharge diagnoses, outpatient diagnoses and procedures, and outpatient pharmacy claims as well as ethnicity and Medicare eligibility. Members maintain their same identifier even if they leave the system for a brief period however the dataset lacks lab data. [For further information link to RWE site for Truven MDCD."
+     	# Details specific to the database:
+     	outputFolder <- "s:/CovidHospCohortDiag/mdcd"
+     	cdmDatabaseSchema <- "cdm_ibm_mdcd_v1023.dbo"
+     	cohortDatabaseSchema <- "scratch.dbo"
+     	cohortTable <- "mschuemi_skeleton_mdcd"
+     	databaseId <- "MDCD"
+     	databaseName <- "Truven Health MarketScan® Multi-State Medicaid Database"
+     	databaseDescription <- "Truven Health MarketScan® Multi-State Medicaid Database (MDCD) adjudicated US health insurance claims 	for Medicaid enrollees from multiple states and includes hospital discharge diagnoses, outpatient diagnoses and procedures, and outpatient pharmacy claims as well as ethnicity and Medicare eligibility. Members maintain their same identifier even if they leave the system for a brief period however the dataset lacks lab data. [For further information link to RWE site for Truven MDCD."
      
-     # Use this to run the cohorttDiagnostics. The results will be stored in the diagnosticsExport subfolder of the outputFolder. This can be shared between sites.
-     runCohortDiagnostics(connectionDetails = connectionDetails,
+     	# Use this to run the cohorttDiagnostics. The results will be stored in the diagnosticsExport subfolder of the outputFolder. This can be shared between sites.
+     	runCohortDiagnostics(connectionDetails = connectionDetails,
                      cdmDatabaseSchema = cdmDatabaseSchema,
                      cohortDatabaseSchema = cohortDatabaseSchema,
                      cohortTable = cohortTable,
