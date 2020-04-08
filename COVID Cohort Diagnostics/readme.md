@@ -121,7 +121,7 @@ Alternatively, ensure that you have installed only the 64-bit versions of R and 
 
 	```r
 	# To view your results: 
-CohortDiagnostics::launchDiagnosticsExplorer(file.path(outputFolder, "diagnosticsExport"))
+	CohortDiagnostics::launchDiagnosticsExplorer(file.path(outputFolder, "diagnosticsExport"))
 	```
   
 License
