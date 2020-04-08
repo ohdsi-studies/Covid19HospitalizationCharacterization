@@ -57,17 +57,26 @@ Alternatively, ensure that you have installed only the 64-bit versions of R and 
 3. Once installed, you can execute the study by modifying and using the code below. For your convenience, this code is also provided under `extras/CodeToRun.R`:
 
 	```r
-  
+	# Load the package
+	library(InfluenzaHospCohortDiag)
+	
+	# Optional: specify where the temporary files (used by the ff package) will be created:
+	options(fftempdir = "C:/FFtemp")
+	
+	# Maximum number of cores to be used:
+	maxCores <- parallel::detectCores()
+	
 	# Details for connecting to the server:
-  connectionDetails <- DatabaseConnector::createConnectionDetails(dbms = "pdw",
-                                                                 server = Sys.getenv("PDW_SERVER"),
-                                                                 user = NULL,
-                                                                 password = NULL,
-                                                                 port = Sys.getenv("PDW_PORT"))
-     # For Oracle: define a schema that can be used to emulate temp tables:
-     OracleTempSchema <- NULL
-     
-     # Details specific to the database:
+	connectionDetails <- DatabaseConnector::createConnectionDetails(dbms = "pdw",
+	                                                                 server = Sys.getenv("PDW_SERVER"),
+	                                                                 user = NULL,
+	                                                                 password = NULL,
+	                                                                 port = Sys.getenv("PDW_PORT"))
+	
+	# For Oracle: define a schema that can be used to emulate temp tables:
+	oracleTempSchema <- NULL
+	
+	# Details specific to the database:
      outputFolder <- "s:/CovidHospCohortDiag/mdcd"
      cdmDatabaseSchema <- "cdm_ibm_mdcd_v1023.dbo"
      cohortDatabaseSchema <- "scratch.dbo"
