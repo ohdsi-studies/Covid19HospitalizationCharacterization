@@ -58,7 +58,7 @@ Alternatively, ensure that you have installed only the 64-bit versions of R and 
 
 	```r
 	# Load the package
-	library(InfluenzaHospCohortDiag)
+	library(CovidHospCohortDiag)
 	
 	# Optional: specify where the temporary files (used by the ff package) will be created:
 	options(fftempdir = "C:/FFtemp")
