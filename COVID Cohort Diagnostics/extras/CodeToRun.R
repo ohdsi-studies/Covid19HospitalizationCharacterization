@@ -69,4 +69,13 @@ runCohortDiagnostics(connectionDetails = connectionDetails,
 CohortDiagnostics::launchDiagnosticsExplorer(file.path(outputFolder, "diagnosticsExport"))
 
 
+# To generate additional tables.
+additionalTable1(connectionDetails = connectionDetails,
+                 cdmDatabaseSchema = cdmDatabaseSchema,
+                 cohortDatabaseSchema = cohortDatabaseSchema,
+                 cohortTable = cohortTable,
+                 oracleTempSchema = oracleTempSchema,
+                 outputFolder = outputFolder,
+                 databaseId = databaseId,
+                 minCellCount = 10)
 

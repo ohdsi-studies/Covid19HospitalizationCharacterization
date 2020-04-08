@@ -55,18 +55,25 @@ runCohortDiagnostics(connectionDetails = connectionDetails,
                      databaseName = databaseName,
                      databaseDescription = databaseDescription,
                      createCohorts = TRUE,
-                     runInclusionStatistics = FALSE,
-                     runIncludedSourceConcepts = FALSe,
-                     runOrphanConcepts = FALSE,
-                     runTimeDistributions = FALSE,
-                     runBreakdownIndexEvents = FALSE,
-                     runIncidenceRates = FALSE,
-                     runCohortOverlap = FALSE,
-                     runCohortCharacterization = FALSE,
+                     runInclusionStatistics = TRUE,
+                     runIncludedSourceConcepts = TRUE,
+                     runOrphanConcepts = TRUE,
+                     runTimeDistributions = TRUE,
+                     runBreakdownIndexEvents = TRUE,
+                     runIncidenceRates = TRUE,
+                     runCohortOverlap = TRUE,
+                     runCohortCharacterization = TRUE,
                      minCellCount = 10)
 
 # To view your results: 
 CohortDiagnostics::launchDiagnosticsExplorer(file.path(outputFolder, "diagnosticsExport"))
 
-
-
+# To generate additional tables.
+additionalTable1(connectionDetails = connectionDetails,
+                 cdmDatabaseSchema = cdmDatabaseSchema,
+                 cohortDatabaseSchema = cohortDatabaseSchema,
+                 cohortTable = cohortTable,
+                 oracleTempSchema = oracleTempSchema,
+                 outputFolder = outputFolder,
+                 databaseId = databaseId,
+                 minCellCount = 10)
