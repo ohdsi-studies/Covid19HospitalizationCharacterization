@@ -124,8 +124,6 @@ Alternatively, ensure that you have installed only the 64-bit versions of R and 
 CohortDiagnostics::launchDiagnosticsExplorer(file.path(outputFolder, "diagnosticsExport"))
 	```
   
-  Note that you can save plots from within the Shiny app. It is possible to view results from more than one database by applying `prepareForEvidenceExplorer` to the Results file from each database, and using the same data folder. Set `blind = FALSE` if you wish to be unblinded to the final results.
-
 License
 =======
 The CovidHospCohortDiag package is licensed under Apache License 2.0
