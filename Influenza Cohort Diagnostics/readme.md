@@ -121,10 +121,8 @@ Alternatively, ensure that you have installed only the 64-bit versions of R and 
 
 	```r
 	# To view your results: 
-CohortDiagnostics::launchDiagnosticsExplorer(file.path(outputFolder, "diagnosticsExport"))
+	CohortDiagnostics::launchDiagnosticsExplorer(file.path(outputFolder, "diagnosticsExport"))
 	```
-
-  Note that you can save plots from within the Shiny app. It is possible to view results from more than one database by applying `prepareForEvidenceExplorer` to the Results file from each database, and using the same data folder. Set `blind = FALSE` if you wish to be unblinded to the final results.
 
 License
 =======
