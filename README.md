@@ -10,9 +10,9 @@ Clinical Characterization of Patients Hospitalized with COVID-19 and Influenza
 - Study lead forums tag: **[EdBurn](https://forums.ohdsi.org/u/edburn), [SCYou](https://forums.ohdsi.org/u/SCYou)**
 - Study start date: **March 16, 2020**
 - Study end date: **April 9, 2020**
-- Protocol:
+- Protocol: **[Word Doc](https://github.com/ohdsi-studies/Covid19HospitalizationCharacterization/blob/master/documents/Protocol_COVID-19%20Hospitalization%20Characterisation_V1.1.docx)**
 - Publications:
-- Results explorer:
+- Results explorer: **[Influenza Cohort Diagnostics](https://data.ohdsi.org/Covid19InfluenzaHospitalizations/**
 
 A study to describe the baseline characteristics of suspected cases of the COVID-19 or confirmed cases of the COVID-19 and influenza patients from 2014-2019 and 2009-2010 (H1N1 pandemic).
 
