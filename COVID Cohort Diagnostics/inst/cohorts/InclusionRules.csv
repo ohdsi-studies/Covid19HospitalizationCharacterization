@@ -1,0 +1,11 @@
+"cohortName","ruleSequence","ruleName","cohortId"
+"COVID-19 broad - no prior observation required",0,"age >=18",4
+"COVID-19 broad - no prior observation required",1,"does not have hospitalization for COVID19 in the 6 months preceding admission",4
+"COVID-19 broad - with prior observation",0,"age >=18",3
+"COVID-19 broad - with prior observation",1,"has >=365d of prior observation",3
+"COVID-19 broad - with prior observation",2,"does not have hospitalization for COVID19 in the 6 months preceding admission",3
+"COVID-19 narrow - no prior observation required",0,"age >=18",2
+"COVID-19 narrow - no prior observation required",1,"does not have hospitalization for COVID19 in the 6 months preceding admission",2
+"COVID-19 narrow - with prior observation",0,"age >=18",1
+"COVID-19 narrow - with prior observation",1,"has >=365d of prior observation",1
+"COVID-19 narrow - with prior observation",2,"does not have hospitalization for COVID19 in the 6 months preceding admission",1

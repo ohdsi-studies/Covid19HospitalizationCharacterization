@@ -1,0 +1,6 @@
+.REnviron
+.Rproj.user
+.Rhistory
+.RData
+.Ruserdata
+*.tmp

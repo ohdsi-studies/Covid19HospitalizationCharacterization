@@ -1,0 +1,21 @@
+"cohortName","ruleSequence","ruleName","cohortId"
+"Influenza broad - with no prior observation required - 2009-2010 season",0,"age >=18",8
+"Influenza broad - with no prior observation required - 2009-2010 season",1,"does not have hospitalization for influenza in the 6 months preceding admission",8
+"Influenza broad - with no prior observation required - 2014-2019 seasons",0,"age >=18",12
+"Influenza broad - with no prior observation required - 2014-2019 seasons",1,"does not have hospitalization for influenza in the 6 months preceding admission",12
+"Influenza broad - with prior observation - 2009-2010 season",0,"age >=18",7
+"Influenza broad - with prior observation - 2009-2010 season",1,"has >=365d of prior observation",7
+"Influenza broad - with prior observation - 2009-2010 season",2,"does not have hospitalization for influenza in the 6 months preceding admission",7
+"Influenza broad - with prior observation - 2014-2019 seasons",0,"age >=18",11
+"Influenza broad - with prior observation - 2014-2019 seasons",1,"has >=365d of prior observation",11
+"Influenza broad - with prior observation - 2014-2019 seasons",2,"does not have hospitalization for influenza in the 6 months preceding admission",11
+"Influenza narrow - with no prior observation required - 2009-2010 season",0,"age >=18",6
+"Influenza narrow - with no prior observation required - 2009-2010 season",1,"does not have hospitalization for influenza in the 6 months preceding admission",6
+"Influenza narrow - with no prior observation required - 2014-2019 seasons",0,"age >=18",10
+"Influenza narrow - with no prior observation required - 2014-2019 seasons",1,"does not have hospitalization for influenza in the 6 months preceding admission",10
+"Influenza narrow - with prior observation - 2009-2010 season",0,"age >=18",5
+"Influenza narrow - with prior observation - 2009-2010 season",1,"has >=365d of prior observation",5
+"Influenza narrow - with prior observation - 2009-2010 season",2,"does not have hospitalization for influenza in the 6 months preceding admission",5
+"Influenza narrow - with prior observation - 2014-2019 seasons",0,"age >=18",9
+"Influenza narrow - with prior observation - 2014-2019 seasons",1,"has >=365d of prior observation",9
+"Influenza narrow - with prior observation - 2014-2019 seasons",2,"does not have hospitalization for influenza in the 6 months preceding admission",9

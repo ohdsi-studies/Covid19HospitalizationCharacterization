@@ -1,0 +1,7 @@
+atlasId,atlasName,cohortId,name
+1,Influenza test,1,FluTest
+2,Confirmed cases of influenza,2,FluConfirmed
+3,Suspected cases of COVID-19,3,CovidSuspected
+4,Confirmed cases of COVID-19,4,CovidConfirmed
+5,All-cause mortality,5,Mortality
+6,Oxygen therapy,6,OxygenTherapy
