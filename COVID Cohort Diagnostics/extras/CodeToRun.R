@@ -55,15 +55,16 @@ runCohortDiagnostics(connectionDetails = connectionDetails,
                      databaseName = databaseName,
                      databaseDescription = databaseDescription,
                      createCohorts = TRUE,
-                     runInclusionStatistics = FALSE,
+                     runInclusionStatistics = TRUE,
                      runIncludedSourceConcepts = FALSE,
                      runOrphanConcepts = FALSE,
-                     runTimeDistributions = FALSE,
-                     runBreakdownIndexEvents = FALSE,
+                     runTimeDistributions = TRUE,
+                     runBreakdownIndexEvents = TRUE,
                      runIncidenceRates = FALSE,
                      runCohortOverlap = FALSE,
                      runCohortCharacterization = TRUE,
                      minCellCount = 10)
+
 
 # To view your results: 
 CohortDiagnostics::launchDiagnosticsExplorer(file.path(outputFolder, "diagnosticsExport"))
