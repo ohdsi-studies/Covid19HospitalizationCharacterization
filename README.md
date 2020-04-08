@@ -30,7 +30,7 @@ See [here](https://ohdsi.github.io/MethodsLibrary/rSetup.html) for instructions 
 
 How to run
 ==========
-1. This study is currently comprised of two cohort diagnostics packages. The first, in "/COVID Cohort Diagnostics", is for cohorts of individuals with COVID-19. The second, in "/Influenza Cohort Diagnostic", is for cohorts of individuals with influenza in previous years.  
+1. This study is currently comprised of two cohort diagnostics packages. The first, in ["/COVID Cohort Diagnostics"](https://github.com/ohdsi-studies/Covid19HospitalizationCharacterization/tree/master/COVID%20Cohort%20Diagnostics), is for cohorts of individuals with COVID-19. The second, in ["/Influenza Cohort Diagnostic"](https://github.com/ohdsi-studies/Covid19HospitalizationCharacterization/tree/master/Influenza%20Cohort%20Diagnostics), is for cohorts of individuals with influenza in previous years.  
 
 2. You will ultimately build two separate libraries for these analysis: CovidHospCohortDiag (the Covid Characterization study) and InfluenzaHospCohortDiag (the Influena Characterization study). Each Analysis folder has specific instructions on how to install the study library.
  
