@@ -1,6 +1,6 @@
 # Copyright 2020 Observational Health Data Sciences and Informatics
 #
-# This file is part of InfluenzaHospCohortDiag
+# This file is part of CovidHospCohortDiag
 #
 # Licensed under the Apache License, Version 2.0 (the "License");
 # you may not use this file except in compliance with the License.
@@ -37,21 +37,21 @@ additionalTable1 <- function(connectionDetails = connectionDetails,
   #Defining concept IDs
   conditionGroupConceptIds <- 
     c(439777,4212540,201820,201254,201826,318800,192671,4030518,193782,
-439727,432867,80180,4291005,4281232,197494,380378,81902,434557,440638,
-432586,4182210,440383,435783,4279309,134057,381591,313217,
-321319,381591,317576,321588,316139,316866,4185932,321052,
-440417,4167085,4231363,444247,44784217,314054,438112,
-443392,4147164,432571,4044013,
-4112853,4180790,40481902,40493428,443388,40493428,200962,
-4155297,3169522,255055008,363392002,
-4154630,320136,317009,255573,255841,261325,441267,256449,
-3185877,4322024,4197819,313459,40396500,4212886,433740,
-140168,80809,255891,374919,4074815,201606,
-81893,4253901,314963,4028942,40438630,40386324,
-194992,443394,254443,134442,432295,192675,200762,76685,4103532,4137275)
-    
+      439727,432867,80180,4291005,4281232,197494,380378,81902,434557,440638,
+      432586,4182210,440383,435783,4279309,134057,381591,313217,
+      321319,381591,317576,321588,316139,316866,4185932,321052,
+      440417,4167085,4231363,444247,44784217,314054,438112,
+      443392,4147164,432571,4044013,
+      4112853,4180790,40481902,40493428,443388,40493428,200962,
+      4155297,3169522,255055008,363392002,
+      4154630,320136,317009,255573,255841,261325,441267,256449,
+      3185877,4322024,4197819,313459,40396500,4212886,433740,
+      140168,80809,255891,374919,4074815,201606,
+      81893,4253901,314963,4028942,40438630,40386324,
+      194992,443394,254443,134442,432295,192675,200762,76685,4103532,4137275)
   
-drugGroupConceptIds <- c(21601822,
+  
+  drugGroupConceptIds <- c(21601822,
                            21602796,
                            21601964,
                            21603126,
@@ -116,7 +116,7 @@ drugGroupConceptIds <- c(21601822,
                                 1340128,
                                 1335471
   )
-
+  
   
   for( i in 1:nrow(cohortsToCreate)){
     cohortName <- cohortsToCreate$name[i]
@@ -348,6 +348,19 @@ comparativeCharacterization <- function(connectionDetails,
                            percentDigits = 1, 
                            valueDigits = 1,
                            stdDiffDigits = 2)
+    
+    countNum <- as.numeric(gsub(",","",as.character(table1$Count)))
+    smallCellIndex <- which(((countNum < minCellCount) & (countNum > 0)) & (!is.na(countNum)))
+    if(length(smallCellIndex) > 0){
+      table1[smallCellIndex, 2] <- sprintf("< %d", minCellCount)
+      table1[smallCellIndex, 3] <- NA
+    }
+    
+    if(!is.null(fileName)){
+      write.csv(table1,fileName)
+      ParallelLogger::logInfo(sprintf("Table 1 is saved in %s", fileName))
+    }
+    
     if(!is.null(fileName)){
       write.csv(table1,fileName)
       ParallelLogger::logInfo(sprintf("Table 1 is saved in %s", fileName))
