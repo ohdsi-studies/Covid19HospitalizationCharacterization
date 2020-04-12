@@ -227,8 +227,8 @@ additionalTable1 <- function(connectionDetails = connectionDetails,
                                                   useVisitConceptCountMediumTerm = T,
                                                   useVisitConceptCountShortTerm = T,
                                                   longTermStartDays = -365,
-                                                  mediumTermStartDays = -180,
-                                                  shortTermStartDays = -30,
+                                                  mediumTermStartDays = -30,
+                                                  shortTermStartDays = 0,
                                                   endDays = endDay) #you can try diverse time settings
       tryCatch({
         comparativeCharacterization(connectionDetails = connectionDetails,
