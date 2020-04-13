@@ -1,0 +1,46 @@
+Package: CovidResultsViewer
+Type: Package
+Title: COVID OHDSI Characterization shiny app 
+Version: 0.0.1
+Date: 2020-03-31
+Authors@R: c(
+    person("Anthony", "Sena", email = "asena5@its.jnj.com", role = c("aut", "cre")),	
+    person("Observational Health Data Science and Informatics", role = c("cph"))
+  )
+Description: Results viewer for the OHDSI COVID Characterization study.
+Depends:
+	DatabaseConnector
+Imports:
+	SqlRender,
+	ggplot2 (<= 3.2.1),
+	ROhdsiWebApi,
+	ParallelLogger,
+	readr,
+	tibble,
+	dplyr,
+	RJSONIO,
+	FeatureExtraction,
+	ff,
+	digest
+Suggests:
+  testthat,
+  knitr,
+  rmarkdown,
+  DT,
+  plotly,
+  shiny,
+  shinydashboard,
+  RColorBrewer,
+  VennDiagram,
+  htmltools,
+  Eunomia
+Remotes:
+  ohdsi/ROhdsiWebApi,
+  ohdsi/FeatureExtraction,
+  ohdsi/Eunomia
+License: Apache License
+VignetteBuilder: knitr
+URL: https://github.com/ohdsi-studies/Covid19HospitalizationCharacterization, https://github.com/ohdsi-studies/Covid19HospitalizationCharacterization
+BugReports: https://github.com/ohdsi-studies/Covid19HospitalizationCharacterization/issues
+RoxygenNote: 7.0.2
+Encoding: UTF-8
