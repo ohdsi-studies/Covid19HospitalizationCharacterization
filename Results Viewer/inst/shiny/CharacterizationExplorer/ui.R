@@ -13,7 +13,10 @@ addInfo <- function(item, infoId) {
 }
 
 dashboardPage(
-  dashboardHeader(title = "Influenza Chr"),
+  dashboardHeader(
+      title = "OHDSI COVID and Influenza Hospitalization Characterization",
+      titleWidth = 450
+  ),
   dashboardSidebar(
     sidebarMenu(id = "tabs",
                 addInfo(menuItem("About", tabName = "about"), "aboutInfo"),
