@@ -15,7 +15,11 @@ addInfo <- function(item, infoId) {
 dashboardPage(
   dashboardHeader(
       title = "OHDSI COVID and Influenza Hospitalization Characterization",
-      titleWidth = 450
+      titleWidth = 450,
+      tags$li(div(img(src = 'logo.png',
+                      title = "OHDSI COVID Characterization", height = "40px", width = "40px"),
+                  style = "padding-top:0px; padding-bottom:0px;"),
+              class = "dropdown")    
   ),
   dashboardSidebar(
     sidebarMenu(id = "tabs",
@@ -26,7 +30,7 @@ dashboardPage(
                 #if (exists("timeDistribution")) addInfo(menuItem("Time Distributions", tabName = "timeDistribution"), "timeDistributionInfo"),
                 #if (exists("includedSourceConcept")) addInfo(menuItem("Included (Source) Concepts", tabName = "includedConcepts"), "includedConceptsInfo"),
                 #if (exists("orphanConcept")) addInfo(menuItem("Orphan (Source) Concepts", tabName = "orphanConcepts"), "orphanConceptsInfo"),
-                if (exists("inclusionRuleStats")) addInfo(menuItem("Inclusion Rule Statistics", tabName = "inclusionRuleStats"), "inclusionRuleStatsInfo"),
+                #if (exists("inclusionRuleStats")) addInfo(menuItem("Inclusion Rule Statistics", tabName = "inclusionRuleStats"), "inclusionRuleStatsInfo"),
                 #if (exists("indexEventBreakdown")) addInfo(menuItem("Index Event Breakdown", tabName = "indexEventBreakdown"), "indexEventBreakdownInfo"),
                 if (exists("covariateValue")) addInfo(menuItem("Cohort Characterization", tabName = "cohortCharacterization"), "cohortCharacterizationInfo"),
                 #if (exists("cohortOverlap")) addInfo(menuItem("Cohort Overlap", tabName = "cohortOverlap"), "cohortOverlapInfo"),
@@ -35,7 +39,7 @@ dashboardPage(
                                  selectInput("database", "Database", database$databaseId, selectize = FALSE)
                 ),
                 conditionalPanel(condition = "input.tabs=='incidenceRate' | input.tabs=='timeDistribution' | input.tabs=='cohortCharacterization' | input.tabs=='cohortCounts' | input.tabs=='indexEventBreakdown'",
-                                 checkboxGroupInput("databases", "Database", database$databaseId, selected = database$databaseId[1])
+                                 checkboxGroupInput("databases", "Database", database$databaseId, selected = database$databaseId)
                 ),
                 conditionalPanel(condition = "input.tabs!='cohortCounts'",
                                  selectInput("cohort", "Cohort (Target)", choices = cohort$cohortFullName, selectize = FALSE)
@@ -53,9 +57,7 @@ dashboardPage(
       tabItem(
         tabName = "about",
         br(),
-        p(
-          "These research results are from a retrospective, real-world observational study aimed at characterizing the baseline characteristics of influenza patients during 2009-2010 and 2014-2019."
-        )
+        includeHTML("./html/about.html")
       ),
       tabItem(
         tabName = "databases",
