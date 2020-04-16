@@ -5,6 +5,7 @@ source("PlotsAndTables.R")
 
 continuousAnalysisIds <- c(901)
 includedAnalysisIds <- c(1:11,209:216,409:416)
+allAnalysisIds <- c(includedAnalysisIds, continuousAnalysisIds)
 
 truncateStringDef <- function(columns, maxChars) {
   list(
@@ -29,6 +30,11 @@ isCovariateContinuous <- function(covariateId) {
 isIncludedBinaryCovariate <- function(covariateId) {
   analysisId <- getAnalysisIdFromCovariateId(covariateId)
   return(!is.na(match(analysisId, includedAnalysisIds)))
+}
+
+isStudyCovariate <- function(covariateId) {
+  analysisId <- getAnalysisIdFromCovariateId(covariateId)
+  return(!is.na(match(analysisId, allAnalysisIds)))
 }
 
 minCellCountDef <- function(columns) {
@@ -744,6 +750,7 @@ shinyServer(function(input, output, session) {
     if (nrow(balance) == 0) {
       return(NULL)
     }
+    balance <- balance[isStudyCovariate(balance$covariateId) == TRUE, ]
     balance$mean1[is.na(balance$mean1)] <- 0
     balance$mean2[is.na(balance$mean2)] <- 0
     plot <- ggplot2::ggplot(balance, ggplot2::aes(x = mean1, y = mean2, color = absStdDiff)) +
