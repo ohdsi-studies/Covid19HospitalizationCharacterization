@@ -4,6 +4,8 @@
 rootDirectory <- "E:/covidCharacterizationResults/input"
 outputDirectory <- "E:/covidCharacterizationResults/output"
 cohortFile <- "E:/covidCharacterizationResults/input/cohort.csv"
+cohortIdsToKeep <- c( 1,2,5,6,9,10,105,106)
+analysisIdsToKeep <- c(1:3,6:11,209:216,409:416,901)
 
 # The database_id used when running the analysis didn't 
 # match up to the ones used in the publication so fixing
@@ -66,6 +68,26 @@ ParallelLogger::logInfo("Unzipping covid results")
 dfCovidFileList <- processZipFiles(file.path(rootDirectory, "covid"), "covid")
 dfFullFileList <- rbind(dfInfluenzaFileList, dfCovidFileList)
 
+getAnalysisIdFromCovariateId <- function(covariateId) {
+  analysisId <- substr(covariateId, nchar(covariateId)-2, nchar(covariateId))
+  return(as.integer(analysisId))  
+}
+
+isStudyCovariate <- function(covariateId) {
+  analysisId <- getAnalysisIdFromCovariateId(covariateId)
+  return(!is.na(match(analysisId, analysisIdsToKeep)))
+}
+
+subsetToCohortsAndAnalysesToKeep <- function(data) {
+  if (any(names(data) == 'cohort_id')) {
+    data <- data[data$cohort_id %in% cohortIdsToKeep, ]
+  }
+  if (any(names(data) == 'covariate_id')) {
+    data <- data[isStudyCovariate(data$covariate_id) == TRUE, ]
+  }
+  return(data)  
+}
+
 remapCohortId <- function(filePath) {
   if (file.exists(filePath)) {
     data <- read.csv(filePath)
@@ -117,6 +139,7 @@ combine <- function(files, resultsFile, mappedDatabaseName) {
       remapDatabaseId(files[i], mappedDatabaseName)
     }
     combinedData <- do.call("rbind",lapply(files,FUN=function(files){ read.csv(files)}))
+    combinedData <- subsetToCohortsAndAnalysesToKeep(combinedData)
     return(combinedData)
   } else {
     return(NULL)
@@ -134,6 +157,7 @@ concatFiles <- function(files, resultsFile, mappedDatabaseName) {
 distinctFiles <- function(files, resultsFile, mappedDatabaseName) {
   ParallelLogger::logInfo(paste0("  -- Combining distinct results to ", resultsFile))
   combinedData <- combine(files, resultsFile, mappedDatabaseName)
+  combinedData <- subsetToCohortsAndAnalysesToKeep(combinedData)
   if (!is.null(combinedData)) {
     readr::write_csv(unique(combinedData), resultsFile)
   }

@@ -3,10 +3,6 @@ library(shinydashboard)
 library(DT)
 source("PlotsAndTables.R")
 
-continuousAnalysisIds <- c(901)
-includedAnalysisIds <- c(1:11,209:216,409:416)
-allAnalysisIds <- c(includedAnalysisIds, continuousAnalysisIds)
-
 truncateStringDef <- function(columns, maxChars) {
   list(
     targets = columns,
@@ -15,26 +11,6 @@ truncateStringDef <- function(columns, maxChars) {
         '<span title=\"' + data + '\">' + data.substr(0, %s) + '...</span>' : data;\n
      }", maxChars, maxChars))
   )
-}
-
-getAnalysisIdFromCovariateId <- function(covariateId) {
-  analysisId <- substr(covariateId, nchar(covariateId)-2, nchar(covariateId))
-  return(as.integer(analysisId))  
-}
-
-isCovariateContinuous <- function(covariateId) {
-  analysisId <- getAnalysisIdFromCovariateId(covariateId)
-  return(!is.na(match(analysisId, continuousAnalysisIds)))
-}
-
-isIncludedBinaryCovariate <- function(covariateId) {
-  analysisId <- getAnalysisIdFromCovariateId(covariateId)
-  return(!is.na(match(analysisId, includedAnalysisIds)))
-}
-
-isStudyCovariate <- function(covariateId) {
-  analysisId <- getAnalysisIdFromCovariateId(covariateId)
-  return(!is.na(match(analysisId, allAnalysisIds)))
 }
 
 minCellCountDef <- function(columns) {
@@ -525,13 +501,11 @@ shinyServer(function(input, output, session) {
         }
       }
       if (input$rawCharSubType == "Continuous") {
-        table <- table[isCovariateContinuous(table$covariateId) == TRUE, ]
         columnDefs <- list(
           truncateStringDef(0, 150),
           formatFn <- minCellRealDef(1:(2*length(databaseIds)))
         )
       } else {
-        table <- table[isIncludedBinaryCovariate(table$covariateId) == TRUE, ]
         columnDefs <- list(
           truncateStringDef(0, 150),
           minCellPercentDef(seq(1, by = 2, length = length(databaseIds))),
@@ -698,13 +672,11 @@ shinyServer(function(input, output, session) {
       table <- formatRound(table, 4, digits = 2)
     } else {
       if (input$rawCharCompareSubType == "Continuous") {
-        balance <- balance[isCovariateContinuous(balance$covariateId) == TRUE, ]
         columnDefs <- list(
           truncateStringDef(0, 150),
           minCellRealDef(c(1,3), 2)
         )
       } else {
-        balance <- balance[isIncludedBinaryCovariate(balance$covariateId) == TRUE, ]
         columnDefs <- list(
           truncateStringDef(0, 150),
           minCellPercentDef(c(1,3)),
@@ -750,7 +722,6 @@ shinyServer(function(input, output, session) {
     if (nrow(balance) == 0) {
       return(NULL)
     }
-    balance <- balance[isStudyCovariate(balance$covariateId) == TRUE, ]
     balance$mean1[is.na(balance$mean1)] <- 0
     balance$mean2[is.na(balance$mean2)] <- 0
     plot <- ggplot2::ggplot(balance, ggplot2::aes(x = mean1, y = mean2, color = absStdDiff)) +
