@@ -22,7 +22,7 @@ ensure_installed <- function(pkg) {
 }
 
 library(CovidResultsViewer)
-dataFolder <- "E:/covidCharacterizationResults/output"
+dataFolder <- "C:/Users/Ed/Dropbox/OHDSI/covid/hospital characterisation/network results/clean"
 #CohortDiagnostics::preMergeDiagnosticsFiles(dataFolder) 
 ensure_installed("shiny")
 ensure_installed("shinydashboard")

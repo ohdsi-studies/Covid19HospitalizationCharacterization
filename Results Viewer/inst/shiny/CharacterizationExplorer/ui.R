@@ -1,5 +1,5 @@
 library(shiny)
-library(shinydashboard)
+library(shinydashboard) 
 library(DT)
 
 addInfo <- function(item, infoId) {
@@ -114,13 +114,13 @@ dashboardPage(
               tags$table(style = "width: 100%",
                          tags$tr(
                            tags$td(valign = "bottom",
-                              radioButtons("charType", "", c("Pretty", "Raw"), selected = "Pretty", inline = TRUE),
+                              radioButtons("charType", "", c("Pretty", "Raw"), selected = "Pretty", inline = TRUE)
                            ),
                            tags$td(HTML("&nbsp;&nbsp;&nbsp;&nbsp;")),
                               tags$td(valign = "bottom", style = "text-align: right",
                                   conditionalPanel(condition = "input.charType=='Raw'", 
                                       radioButtons("rawCharSubType", "", c("Binary", "Continuous"), selected = "Binary", inline = TRUE)
-                                  ),
+                                  )
                            )
                          )),
               dataTableOutput("characterizationTable")
@@ -139,13 +139,13 @@ dashboardPage(
               tags$table(style = "width: 100%",
                          tags$tr(
                            tags$td(valign = "bottom",
-                                   radioButtons("charCompareType", "", c("Pretty table", "Raw table", "Plot"), selected = "Pretty table", inline = TRUE),
+                                   radioButtons("charCompareType", "", c("Pretty table", "Raw table", "Plot"), selected = "Pretty table", inline = TRUE)
                            ),
                            tags$td(HTML("&nbsp;&nbsp;&nbsp;&nbsp;")),
                            tags$td(valign = "bottom", style = "text-align: right",
                                    conditionalPanel(condition = "input.charCompareType=='Raw table'", 
                                                     radioButtons("rawCharCompareSubType", "", c("Binary", "Continuous"), selected = "Binary", inline = TRUE)
-                                   ),
+                                   )
                            )
                          )),
               conditionalPanel(condition = "input.charCompareType=='Pretty table' | input.charCompareType=='Raw table'",
@@ -157,7 +157,7 @@ dashboardPage(
                                  htmlOutput("hoverInfoCharComparePlot"),
                                  plotOutput("charComparePlot", height = 700, hover = hoverOpts("plotHoverCharCompare", delay = 100, delayType = "debounce"))
                                )
-              )
+              ) 
       )
     )
   )
