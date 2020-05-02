@@ -461,7 +461,7 @@ shinyServer(function(input, output, session) {
     data$cohortId <- NULL
     databaseIds <- unique(data$databaseId)
 
-    if (input$charType == "Pretty") {
+    if (input$charType == "Summary table") {
       data <- merge(data, covariate)
       table <- data[data$databaseId == databaseIds[1], ]
       table <- prepareTable1(table)
@@ -665,7 +665,7 @@ shinyServer(function(input, output, session) {
       return(NULL)
     }
 
-    if (input$charCompareType == "Pretty table") {
+    if (input$charCompareType == "Summary table") {
       balance <- merge(balance, covariate[, c("covariateId", "covariateAnalysisId")])
       table <- prepareTable1Comp(balance)
       options = list(pageLength = 999,
@@ -756,7 +756,8 @@ shinyServer(function(input, output, session) {
       ggplot2::geom_vline(xintercept = 0) +             
       ggplot2::scale_x_continuous("Mean Target", limits = c(0, 1)) +
       ggplot2::scale_y_continuous("Mean Comparator", limits = c(0, 1)) +
-      ggplot2::scale_color_gradient("Absolute\nStd. Diff.", low = "blue", high = "red", space = "Lab", na.value = "red")
+      ggplot2::scale_color_gradient("Absolute\nStd. Diff.", low = "blue", high = "red", space = "Lab", na.value = "red")+
+      ggplot2::theme_minimal()
     return(plot)
   }, res = 100)
   
