@@ -5,3 +5,5 @@ atlasId,atlasName,cohortId,name
 246,COVID-19 broad - no prior observation required,4,COVID-19 broad - no prior observation required
 272,COVID-19 narrow - no prior observation required [CUIMC],105,COVID-19 narrow - no prior observation required [CUIMC]
 273,COVID-19 narrow - with prior observation [CUIMC],106,COVID-19 narrow - with prior observation [CUIMC]
+294,COVID-19 narrow - with prior observation [SIDIAP],107,COVID-19 narrow - with prior observation [SIDIAP]
+295,COVID-19 narrow - no prior observation required [SIDIAP],108,COVID-19 narrow - no prior observation required [SIDIAP]
