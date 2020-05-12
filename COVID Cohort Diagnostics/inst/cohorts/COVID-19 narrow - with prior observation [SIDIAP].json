@@ -324,11 +324,7 @@
         "VisitOccurrence": {
           "CodesetId": 4,
           "OccurrenceStartDate": {
-            "Value": "2020-02-29",
-            "Op": "gte"
-          },
-          "OccurrenceEndDate": {
-            "Value": "2020-03-30",
+            "Value": "2020-03-31",
             "Op": "lte"
           }
         }

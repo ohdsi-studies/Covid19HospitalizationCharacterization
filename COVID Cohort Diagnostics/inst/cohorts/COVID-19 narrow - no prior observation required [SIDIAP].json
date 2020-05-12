@@ -7,16 +7,16 @@
         "items": [
           {
             "concept": {
+              "CONCEPT_CLASS_ID": "Clinical Finding",
+              "CONCEPT_CODE": "840539006",
               "CONCEPT_ID": 37311061,
               "CONCEPT_NAME": "Disease caused by severe acute respiratory syndrome coronavirus 2",
-              "STANDARD_CONCEPT": "S",
-              "STANDARD_CONCEPT_CAPTION": "Standard",
+              "DOMAIN_ID": "Condition",
               "INVALID_REASON": "V",
               "INVALID_REASON_CAPTION": "Valid",
-              "CONCEPT_CODE": "840539006",
-              "DOMAIN_ID": "Condition",
-              "VOCABULARY_ID": "SNOMED",
-              "CONCEPT_CLASS_ID": "Clinical Finding"
+              "STANDARD_CONCEPT": "S",
+              "STANDARD_CONCEPT_CAPTION": "Standard",
+              "VOCABULARY_ID": "SNOMED"
             },
             "includeDescendants": true
           }
@@ -30,16 +30,16 @@
         "items": [
           {
             "concept": {
+              "CONCEPT_CLASS_ID": "Clinical Finding",
+              "CONCEPT_CODE": "1240581000000104",
               "CONCEPT_ID": 37310282,
               "CONCEPT_NAME": "2019 novel coronavirus detected",
-              "STANDARD_CONCEPT": "S",
-              "STANDARD_CONCEPT_CAPTION": "Standard",
+              "DOMAIN_ID": "Measurement",
               "INVALID_REASON": "V",
               "INVALID_REASON_CAPTION": "Valid",
-              "CONCEPT_CODE": "1240581000000104",
-              "DOMAIN_ID": "Measurement",
-              "VOCABULARY_ID": "SNOMED",
-              "CONCEPT_CLASS_ID": "Clinical Finding"
+              "STANDARD_CONCEPT": "S",
+              "STANDARD_CONCEPT_CAPTION": "Standard",
+              "VOCABULARY_ID": "SNOMED"
             },
             "includeDescendants": true
           }
@@ -53,48 +53,48 @@
         "items": [
           {
             "concept": {
+              "CONCEPT_CLASS_ID": "Clinical Finding",
+              "CONCEPT_CODE": "1240581000000104",
               "CONCEPT_ID": 37310282,
               "CONCEPT_NAME": "2019 novel coronavirus detected",
-              "STANDARD_CONCEPT": "S",
-              "STANDARD_CONCEPT_CAPTION": "Standard",
+              "DOMAIN_ID": "Measurement",
               "INVALID_REASON": "V",
               "INVALID_REASON_CAPTION": "Valid",
-              "CONCEPT_CODE": "1240581000000104",
-              "DOMAIN_ID": "Measurement",
-              "VOCABULARY_ID": "SNOMED",
-              "CONCEPT_CLASS_ID": "Clinical Finding"
+              "STANDARD_CONCEPT": "S",
+              "STANDARD_CONCEPT_CAPTION": "Standard",
+              "VOCABULARY_ID": "SNOMED"
             },
             "isExcluded": true,
             "includeDescendants": true
           },
           {
             "concept": {
+              "CONCEPT_CLASS_ID": "Clinical Finding",
+              "CONCEPT_CODE": "1240591000000102",
               "CONCEPT_ID": 37310281,
               "CONCEPT_NAME": "2019 novel coronavirus not detected",
-              "STANDARD_CONCEPT": "S",
-              "STANDARD_CONCEPT_CAPTION": "Standard",
+              "DOMAIN_ID": "Measurement",
               "INVALID_REASON": "V",
               "INVALID_REASON_CAPTION": "Valid",
-              "CONCEPT_CODE": "1240591000000102",
-              "DOMAIN_ID": "Measurement",
-              "VOCABULARY_ID": "SNOMED",
-              "CONCEPT_CLASS_ID": "Clinical Finding"
+              "STANDARD_CONCEPT": "S",
+              "STANDARD_CONCEPT_CAPTION": "Standard",
+              "VOCABULARY_ID": "SNOMED"
             },
             "isExcluded": true,
             "includeDescendants": true
           },
           {
             "concept": {
+              "CONCEPT_CLASS_ID": "Procedure",
+              "CONCEPT_CODE": "OMOP4873969",
               "CONCEPT_ID": 756055,
               "CONCEPT_NAME": "Measurement of severe acute respiratory syndrome coronavirus 2",
-              "STANDARD_CONCEPT": "S",
-              "STANDARD_CONCEPT_CAPTION": "Standard",
+              "DOMAIN_ID": "Measurement",
               "INVALID_REASON": "V",
               "INVALID_REASON_CAPTION": "Valid",
-              "CONCEPT_CODE": "OMOP4873969",
-              "DOMAIN_ID": "Measurement",
-              "VOCABULARY_ID": "OMOP Extension",
-              "CONCEPT_CLASS_ID": "Procedure"
+              "STANDARD_CONCEPT": "S",
+              "STANDARD_CONCEPT_CAPTION": "Standard",
+              "VOCABULARY_ID": "OMOP Extension"
             },
             "includeDescendants": true
           }
@@ -286,31 +286,31 @@
         "items": [
           {
             "concept": {
+              "CONCEPT_CLASS_ID": "Visit",
+              "CONCEPT_CODE": "ERIP",
               "CONCEPT_ID": 262,
               "CONCEPT_NAME": "Emergency Room and Inpatient Visit",
-              "STANDARD_CONCEPT": "S",
-              "STANDARD_CONCEPT_CAPTION": "Standard",
+              "DOMAIN_ID": "Visit",
               "INVALID_REASON": "V",
               "INVALID_REASON_CAPTION": "Valid",
-              "CONCEPT_CODE": "ERIP",
-              "DOMAIN_ID": "Visit",
-              "VOCABULARY_ID": "Visit",
-              "CONCEPT_CLASS_ID": "Visit"
+              "STANDARD_CONCEPT": "S",
+              "STANDARD_CONCEPT_CAPTION": "Standard",
+              "VOCABULARY_ID": "Visit"
             },
             "includeDescendants": true
           },
           {
             "concept": {
+              "CONCEPT_CLASS_ID": "Visit",
+              "CONCEPT_CODE": "IP",
               "CONCEPT_ID": 9201,
               "CONCEPT_NAME": "Inpatient Visit",
-              "STANDARD_CONCEPT": "S",
-              "STANDARD_CONCEPT_CAPTION": "Standard",
+              "DOMAIN_ID": "Visit",
               "INVALID_REASON": "V",
               "INVALID_REASON_CAPTION": "Valid",
-              "CONCEPT_CODE": "IP",
-              "DOMAIN_ID": "Visit",
-              "VOCABULARY_ID": "Visit",
-              "CONCEPT_CLASS_ID": "Visit"
+              "STANDARD_CONCEPT": "S",
+              "STANDARD_CONCEPT_CAPTION": "Standard",
+              "VOCABULARY_ID": "Visit"
             },
             "includeDescendants": true
           }
@@ -324,11 +324,8 @@
         "VisitOccurrence": {
           "CodesetId": 4,
           "OccurrenceStartDate": {
-            "Value": "2020-02-29",
-            "Op": "gte"
-          },
-          "OccurrenceEndDate": {
-            "Value": "2020-03-30",
+            "Value": "2020-03-31",
+            "Extent": "2020-03-31",
             "Op": "lte"
           }
         }

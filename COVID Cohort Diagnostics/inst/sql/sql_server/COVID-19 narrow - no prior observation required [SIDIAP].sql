@@ -96,8 +96,7 @@ from
 JOIN #Codesets codesets on ((vo.visit_concept_id = codesets.concept_id and codesets.codeset_id = 4))
 ) C
 
-WHERE C.visit_start_date >= DATEFROMPARTS(2020, 02, 29)
-AND C.visit_end_date <= DATEFROMPARTS(2020, 03, 30)
+WHERE C.visit_start_date <= DATEFROMPARTS(2020, 03, 31)
 -- End Visit Occurrence Criteria
 
   ) E
