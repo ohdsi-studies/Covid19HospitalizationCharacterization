@@ -1,35 +1,41 @@
-# The root directory contains 2 sub folders: influenza and covid 
+# The root directory contains 2 sub folders: influenza and covid
 # to hold the results from those respective packages. The cohort
 # file contains the cohort.csv to insert into each set of results
 rootDirectory <- "E:/covidCharacterizationResults/input"
 outputDirectory <- "E:/covidCharacterizationResults/output"
 cohortFile <- "E:/covidCharacterizationResults/input/cohort.csv"
-cohortIdsToKeep <- c( 1,2,5,6,9,10,105,106)
+cohortIdsToKeep <- c( 1,2,5,6,9,10,105:108)
 analysisIdsToKeep <- c(1:3,6:11,209:216,409:416,901)
 
-# The database_id used when running the analysis didn't 
+# The database_id used when running the analysis didn't
 # match up to the ones used in the publication so fixing
 # that through this mapping
 databaseIdMap <- data.frame(rawName = character(),
                             mappedName = character())
-databaseIdMap <- rbind(databaseIdMap, 
+databaseIdMap <- rbind(databaseIdMap,
                        data.frame(rawName = "CUIMC",
                                   mappedName = "CUIMC"))
-databaseIdMap <- rbind(databaseIdMap, 
+databaseIdMap <- rbind(databaseIdMap,
                        data.frame(rawName = "DCMC_COVID19",
                                   mappedName = "DCMC"))
-databaseIdMap <- rbind(databaseIdMap, 
+databaseIdMap <- rbind(databaseIdMap,
                        data.frame(rawName = "HIRA",
                                   mappedName = "HIRA"))
-databaseIdMap <- rbind(databaseIdMap, 
+databaseIdMap <- rbind(databaseIdMap,
                        data.frame(rawName = "DEID",
                                   mappedName = "STARR-OMOP"))
-databaseIdMap <- rbind(databaseIdMap, 
+databaseIdMap <- rbind(databaseIdMap,
                        data.frame(rawName = "VA-OMOP",
                                   mappedName = "VA OMOP"))
-databaseIdMap <- rbind(databaseIdMap, 
+databaseIdMap <- rbind(databaseIdMap,
                        data.frame(rawName = "RED",
                                   mappedName = "Tufts CLARET"))
+databaseIdMap <- rbind(databaseIdMap,
+                       data.frame(rawName = "HM",
+                                  mappedName = "HM"))
+databaseIdMap <- rbind(databaseIdMap,
+                       data.frame(rawName = "SIDIAP",
+                                  mappedName = "SIDIAP"))
 
 
 if (!dir.exists(outputDirectory)) {
@@ -50,11 +56,11 @@ processZipFiles <- function(folder, analysis) {
     csvFiles <- list.files(tempFolder, pattern = ".csv")
     if (length(csvFiles[csvFiles == "database.csv"])) {
       databaseInfo <- read.csv(file.path(tempFolder, "database.csv"))
-      databaseId <- as.character(databaseInfo$database_id) 
+      databaseId <- as.character(databaseInfo$database_id)
     } else {
       warning(paste0("No database.csv file found for ", zipFiles[i]))
     }
-    dfFileList <- rbind(dfFileList, 
+    dfFileList <- rbind(dfFileList,
                         data.frame(databaseId = databaseId,
                                    analysis = analysis,
                                    tempDirectory = tempFolder))
@@ -70,7 +76,7 @@ dfFullFileList <- rbind(dfInfluenzaFileList, dfCovidFileList)
 
 getAnalysisIdFromCovariateId <- function(covariateId) {
   analysisId <- substr(covariateId, nchar(covariateId)-2, nchar(covariateId))
-  return(as.integer(analysisId))  
+  return(as.integer(analysisId))
 }
 
 isStudyCovariate <- function(covariateId) {
@@ -85,7 +91,7 @@ subsetToCohortsAndAnalysesToKeep <- function(data) {
   if (any(names(data) == 'covariate_id')) {
     data <- data[isStudyCovariate(data$covariate_id) == TRUE, ]
   }
-  return(data)  
+  return(data)
 }
 
 remapCohortId <- function(filePath) {
@@ -105,7 +111,7 @@ covidCohortMapping <- function(folder) {
   ParallelLogger::logInfo("  -- Checking covid cohort mapping")
   cohorts <- read.csv(file.path(folder, "cohort.csv"))
   cohortIds <- cohorts$cohort_id
-  if (length(cohortIds[cohortIds >= 5])) {
+  if (length(cohortIds[cohortIds %in% c(5,6)])) {
     ParallelLogger::logInfo("  -- Remapping cohort_id 5,6")
     remapCohortId(file.path(folder, "cohort_count.csv"))
     remapCohortId(file.path(folder, "covariate_value.csv"))
@@ -190,16 +196,16 @@ for (i in 1:length(databaseList)) {
     # Someday, do.call instead of this approach
     for (j in 1:length(filesToCopy)) {
       remapDatabaseIdAndCopy(from = file.path(covidFolder, filesToCopy[j]),
-                             to = tempFolder, 
+                             to = tempFolder,
                              mappedDatabaseName = mappedDatabaseName)
     }
     for (j in 1:length(resultsFilesToDistinct)) {
-      distinctFiles(files = file.path(foldersForDatabase$tempDirectory, resultsFilesToDistinct[j]), 
+      distinctFiles(files = file.path(foldersForDatabase$tempDirectory, resultsFilesToDistinct[j]),
                     resultsFile = file.path(tempFolder, resultsFilesToDistinct[j]),
                     mappedDatabaseName = mappedDatabaseName)
     }
     for (j in 1:length(resultsFilesToCombine)) {
-      concatFiles(files = file.path(foldersForDatabase$tempDirectory, resultsFilesToCombine[j]), 
+      concatFiles(files = file.path(foldersForDatabase$tempDirectory, resultsFilesToCombine[j]),
                   resultsFile = file.path(tempFolder, resultsFilesToCombine[j]),
                   mappedDatabaseName = mappedDatabaseName)
     }
@@ -214,7 +220,7 @@ for (i in 1:length(databaseList)) {
   }
   # Copy in the cohort file
   file.copy(from = cohortFile, to = tempFolder)
-  
+
   # Zip the final set of files
   files <- list.files(tempFolder, pattern = ".*\\.csv$")
   zipFileName <- paste0(mappedDatabaseName, "_results.zip")
