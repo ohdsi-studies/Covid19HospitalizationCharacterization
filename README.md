@@ -1,7 +1,7 @@
 Clinical Characterization of Patients Hospitalized with COVID-19 and Influenza
 =============
 
-<img src="https://img.shields.io/badge/Study%20Status-Design%20Finalized-brightgreen.svg" alt="Study Status: Design Finalized">
+<img src="https://img.shields.io/badge/Study%20Status-Results%20Available-yellow.svg" alt="Study Status: Results Available"> 
 
 - Analytics use case(s): **Characterization**
 - Study type: **Clinical Application**
