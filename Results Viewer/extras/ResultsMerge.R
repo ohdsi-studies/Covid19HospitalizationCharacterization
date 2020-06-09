@@ -38,7 +38,7 @@ databaseIdMap <- rbind(databaseIdMap,
                                   mappedName = "Tufts CLARET"))
 databaseIdMap <- rbind(databaseIdMap,
                        data.frame(rawName = "UCHealth_OMOP",
-                                  mappedName = "UCHealth"))
+                                  mappedName = "HDC-UColorado"))
 
 if (!dir.exists(outputDirectory)) {
   dir.create(outputDirectory)
