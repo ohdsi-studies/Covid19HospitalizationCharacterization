@@ -28,15 +28,17 @@ databaseIdMap <- rbind(databaseIdMap,
                        data.frame(rawName = "VA-OMOP",
                                   mappedName = "VA OMOP"))
 databaseIdMap <- rbind(databaseIdMap,
-                       data.frame(rawName = "RED",
-                                  mappedName = "Tufts CLARET"))
-databaseIdMap <- rbind(databaseIdMap,
                        data.frame(rawName = "HM",
                                   mappedName = "HM"))
 databaseIdMap <- rbind(databaseIdMap,
                        data.frame(rawName = "SIDIAP",
                                   mappedName = "SIDIAP"))
-
+databaseIdMap <- rbind(databaseIdMap,
+                       data.frame(rawName = "RED",
+                                  mappedName = "Tufts CLARET"))
+databaseIdMap <- rbind(databaseIdMap,
+                       data.frame(rawName = "UCHealth_OMOP",
+                                  mappedName = "UCHealth"))
 
 if (!dir.exists(outputDirectory)) {
   dir.create(outputDirectory)
@@ -176,7 +178,7 @@ resultsFilesToDistinct <- list("covariate.csv")
 databaseList <- unique(dfFullFileList$databaseId)
 ParallelLogger::logInfo("Combining influenza and covid results")
 for (i in 1:length(databaseList)) {
-  curDatabaseId <- databaseList[i]
+  curDatabaseId <- as.character(databaseList[i])
   # Get the proper database name from the map
   mappedDatabaseName <- databaseIdMap[databaseIdMap$rawName == curDatabaseId, ]$mappedName[1]
   foldersForDatabase <- dfFullFileList[dfFullFileList$databaseId == curDatabaseId,]
@@ -234,3 +236,4 @@ for (i in 1:length(databaseList)) {
 # Cleanup the temp folders ---------------------------------------
 unlink(dfFullFileList$tempDirectory, recursive = TRUE)
 
+CohortDiagnostics::preMergeDiagnosticsFiles("E:/covidCharacterizationResults/output")
