@@ -4,7 +4,7 @@
 rootDirectory <- "E:/covidCharacterizationResults/input"
 outputDirectory <- "E:/covidCharacterizationResults/output"
 cohortFile <- "E:/covidCharacterizationResults/input/cohort.csv"
-cohortIdsToKeep <- c( 1,2,5,6,9,10,105:108)
+cohortIdsToKeep <- c( 1,2,5,6,9,10,105,106)
 analysisIdsToKeep <- c(1:3,6:11,209:216,409:416,901)
 
 # The database_id used when running the analysis didn't
@@ -39,6 +39,10 @@ databaseIdMap <- rbind(databaseIdMap,
 databaseIdMap <- rbind(databaseIdMap,
                        data.frame(rawName = "UCHealth_OMOP",
                                   mappedName = "HDC-UColorado"))
+
+databaseIdMap <- rbind(databaseIdMap,
+                       data.frame(rawName = "premierCovid",
+                                  mappedName = "Premier"))
 
 if (!dir.exists(outputDirectory)) {
   dir.create(outputDirectory)
