@@ -8,14 +8,9 @@
 "COVID-19 narrow - no prior observation required",1,"does not have hospitalization for COVID19 in the 6 months preceding admission",2
 "COVID-19 narrow - no prior observation required [CUIMC]",0,"age >=18",105
 "COVID-19 narrow - no prior observation required [CUIMC]",1,"does not have hospitalization for COVID19 in the 6 months preceding admission",105
-"COVID-19 narrow - no prior observation required [SIDIAP]",0,"age >=18",108
-"COVID-19 narrow - no prior observation required [SIDIAP]",1,"does not have hospitalization for COVID19 in the 6 months preceding admission",108
 "COVID-19 narrow - with prior observation",0,"age >=18",1
 "COVID-19 narrow - with prior observation",1,"has >=365d of prior observation",1
 "COVID-19 narrow - with prior observation",2,"does not have hospitalization for COVID19 in the 6 months preceding admission",1
 "COVID-19 narrow - with prior observation [CUIMC]",0,"age >=18",106
 "COVID-19 narrow - with prior observation [CUIMC]",1,"has >=365d of prior observation",106
 "COVID-19 narrow - with prior observation [CUIMC]",2,"does not have hospitalization for COVID19 in the 6 months preceding admission",106
-"COVID-19 narrow - with prior observation [SIDIAP]",0,"age >=18",107
-"COVID-19 narrow - with prior observation [SIDIAP]",1,"has >=365d of prior observation",107
-"COVID-19 narrow - with prior observation [SIDIAP]",2,"does not have hospitalization for COVID19 in the 6 months preceding admission",107
